@@ -2,8 +2,8 @@
 
 namespace Drupal\filename_transliteration;
 
-use \Drupal\Core\Config\ConfigFactoryInterface;
-use \Drupal\Component\Transliteration\TransliterationInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Component\Transliteration\TransliterationInterface;
 
 /**
  * Class FilenamePostprocessor.
@@ -40,12 +40,15 @@ class FilenamePostprocessor {
   }
 
   /**
-   * Custom method for transliterating filenames converts
-   * spaces to underscores and passes the filename through
+   * Custom method for transliterating filenames.
+   *
+   * Convert spaces to underscores and pass the filename string through
    * Drupal's core transliteration mechanism.
-   * @param String $filename
+   *
+   * @param string $filename
    *   The filename containing characters.
-   * @return String
+   *
+   * @return string
    *   A transliterated filename with lowercase US ASCII characters only.
    */
   public function process($filename) {
@@ -70,4 +73,5 @@ class FilenamePostprocessor {
 
     return $filename;
   }
+
 }

@@ -14,7 +14,8 @@ Transliterations include:
 
 ## Why does this module exist?
 
-While the transliteration functionality was ported into Drupal 8 core, there is no support for filename transliteration yet.
+While the transliteration functionality was ported into Drupal 8 core,
+there is no support for filename transliteration yet.
 
 ## Configuration
 

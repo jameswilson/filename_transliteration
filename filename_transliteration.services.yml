@@ -2,4 +2,3 @@ services:
   filename_transliteration.postprocessor:
     class: Drupal\filename_transliteration\FilenamePostprocessor
     arguments: ['@config.factory', '@transliteration']
-
