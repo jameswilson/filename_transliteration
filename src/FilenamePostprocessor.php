@@ -4,7 +4,6 @@ namespace Drupal\filename_transliteration;
 
 use \Drupal\Core\Config\ConfigFactoryInterface;
 use \Drupal\Component\Transliteration\TransliterationInterface;
-use \Drupal\Component\Utility\Unicode;
 
 /**
  * Class FilenamePostprocessor.
@@ -53,7 +52,7 @@ class FilenamePostprocessor {
 
     // Transliterate and downcase.
     $filename = $this->transliteration->transliterate($filename, 'en', '_');
-    $filename = Unicode::strtolower($filename);
+    $filename = mb_strtolower($filename);
 
     // Repace anything that is not a valid filename character, including a
     // space, with an underscore.

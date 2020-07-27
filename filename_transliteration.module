@@ -7,6 +7,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Implements hook_ENTITY_TYPE_field_values_init().
@@ -24,13 +25,14 @@ function filename_transliteration_file_field_values_init(EntityInterface $entity
 function filename_transliteration_file_presave(EntityInterface $entity) {
   $filename_postprocessor = Drupal::service('filename_transliteration.postprocessor');
   $new_filename = $filename_postprocessor->process($entity->getFilename());
-  if ($new_filename != drupal_basename($entity->getFileUri())) {
+  $file_system = \Drupal::service('file_system');
+  if ($new_filename != $file_system->basename($entity->getFileUri())) {
     $uri = $entity->getFileUri();
-    $directory = drupal_dirname($uri);
+    $directory = $file_system->dirname($uri);
     $uri = $directory . '/' . $new_filename;
-    if ($new_uri = file_unmanaged_move($entity->getFileUri() , $uri, FILE_EXISTS_RENAME)) {
+    if ($new_uri = $file_system->move($entity->getFileUri(), $uri, FileSystemInterface::EXISTS_RENAME)) {
       $entity->set('uri', $new_uri);
-      $entity->set('filename', drupal_basename($new_uri));
+      $entity->set('filename', $file_system->basename($new_uri));
     }
   }
 }
