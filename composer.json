@@ -12,7 +12,5 @@
       "url": "https://packagist.drupal-composer.org"
     }
   ],
-  "require": {
-    "drupal/core": "~8.1"
-  }
+  "require": {}
 }
