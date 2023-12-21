@@ -1,5 +1,8 @@
 # Filename Transliteration
 
+> [!IMPORTANT]
+> This project has moved to https://www.drupal.org/project/filename_transliteration
+
 A Drupal 8 helper module to enable basic transliteration for all uploaded
 File Entities.
 
